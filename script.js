@@ -29,8 +29,6 @@ class ScoreBoard {
 }
 
 let setScoreBoard = (data) => {
-  console.log(data);
-
   if (scoreboard == null) {
     // if scoreboad is null then set scoreboard object in localStorage
 
