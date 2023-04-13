@@ -21,66 +21,49 @@ class ScoreBoard {
     this.computerScore = computerScore;
     this.tieScore = tieScore;
   }
-
-  get getPlayerScore() {
-    return this.playerScore;
-  }
-
-  get getComputerScore() {
-    return this.computerScore;
-  }
-
-  get getTieScore() {
-    return this.tieScore;
-  }
-
-  set setPlayerScore(playerScore) {
-    this.playerScore = playerScore;
-  }
-  set setComputerScore(computerScore) {
-    this.computerScore = computerScore;
-  }
-
-  set setTieScore(tieScore) {
-    this.tieScore = tieScore;
-  }
 }
 
 let setScoreBoard = (data) => {
+  console.log(data);
+
   if (scoreboard == null) {
     window.localStorage.setItem(
       "scoreBoard",
       JSON.stringify(new ScoreBoard(0, 0, 0))
     );
-  } else {
-    let databasescoreBoard = JSON.parse(
-      window.localStorage.getItem("scoreBoard")
-    );
-
-    let playerScore = databasescoreBoard.playerScore;
-    let computerScore = databasescoreBoard.computerScore;
-    let tiescore = databasescoreBoard.tieScore;
-
-    if (data.finalResult == "Player wins") {
-      playerScore += 1;
-    } else if (data.finalResult == "Computer wins") {
-      computerScore += 1;
-    } else {
-      tiescore += 1;
-    }
-
-    let updatedScore = new ScoreBoard(playerScore, computerScore, tiescore);
-
-    window.localStorage.setItem("scoreBoard", JSON.stringify(updatedScore));
-
-    // display this result on page
-
-    displayScoreBoard();
   }
+
+  let databasescoreBoard = JSON.parse(
+    window.localStorage.getItem("scoreBoard")
+  );
+
+  let playerScore = databasescoreBoard.playerScore;
+  let computerScore = databasescoreBoard.computerScore;
+  let tiescore = databasescoreBoard.tieScore;
+
+  if (data.finalResult == "Player wins") {
+    playerScore += 1;
+  } else if (data.finalResult == "Computer wins") {
+    computerScore += 1;
+  } else {
+    tiescore += 1;
+  }
+
+  let updatedScore = new ScoreBoard(playerScore, computerScore, tiescore);
+
+  window.localStorage.setItem("scoreBoard", JSON.stringify(updatedScore));
+
+  // display this result on page
+
+  displayScoreBoard();
 };
 
 let displayScoreBoard = () => {
-  let scoreboard = JSON.parse(window.localStorage.getItem("scoreBoard"));
+  scoreboard = JSON.parse(window.localStorage.getItem("scoreBoard"));
+
+  if (scoreboard == null) {
+    return 0;
+  }
 
   let playerScore = document.getElementById("playerScore");
   let computerScore = document.getElementById("ComputerScore");
@@ -89,8 +72,6 @@ let displayScoreBoard = () => {
   playerScore.innerText = scoreboard.playerScore;
   computerScore.innerText = scoreboard.computerScore;
   tieScore.innerText = scoreboard.tieScore;
-
-  console.log(scoreboard);
 };
 
 runButton.addEventListener("click", async (event) => {
