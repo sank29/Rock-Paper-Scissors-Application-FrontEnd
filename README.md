@@ -1,5 +1,5 @@
 # Rock-Paper-Scissors-Application-FrontEnd
-This is a web application using java, with spring boot as the backend. You can play the Rock Paper Scissors game with the computer as a player.
+This is a web application using html, css, javaScript as frontend and java, spring boot as the backend. You can play the Rock Paper Scissors game with the computer as a player.
 
 
 ## Tech Stack
