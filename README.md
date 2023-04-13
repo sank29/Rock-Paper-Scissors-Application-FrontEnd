@@ -9,7 +9,7 @@ This is the rest web application. You can play the Rock Paper Scissors game with
 - Bootstrap 5
 
 ## Features
-- User Friendly interface
+- User friendly interface
 - Easy to play
 - Scores will be displayed on top
 - Scores data is stored in local storage, if the user reloads page scores will not going to reset
