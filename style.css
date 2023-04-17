@@ -21,6 +21,8 @@
 #run{
     width: 5%;
     margin: auto;
+    display: flex;
+    gap: 10px;
 }
 
 

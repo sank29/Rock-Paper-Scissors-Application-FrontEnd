@@ -1,7 +1,9 @@
 // getting data from localStorage
 let scoreboard = JSON.parse(window.localStorage.getItem("scoreBoard")) || null;
 
-let runButton = document.getElementById("run");
+let runButton = document.getElementById("runApplication");
+
+let resetButton = document.getElementById("resetButton");
 
 let getPlayerChoice = () => {
   let allDivs = document.getElementsByClassName("carousel-item");
@@ -143,3 +145,16 @@ let getData = async (playerChoice) => {
 // after reloading scoreboard will show up
 
 displayScoreBoard();
+
+// reset the score board
+
+resetButton.addEventListener("click", (event) => {
+  console.log("hIII");
+  let updatedScore = new ScoreBoard(0, 0, 0);
+
+  // set the updated score in localStorage
+
+  window.localStorage.setItem("scoreBoard", JSON.stringify(updatedScore));
+
+  displayScoreBoard();
+});
